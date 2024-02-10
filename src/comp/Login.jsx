@@ -9,7 +9,7 @@ const Login = () => {
       // });
       // console.log("yes from client");
 
-      window.location.href = `https://github.com/login/oauth/authorize?client_id=582888e01e3b5a1a3657&scope=user`;
+      window.location.href = `https://github.com/login/oauth/authorize?client_id=086eb0950828a7593ad7&scope=user`;
     } catch (error) {
       console.error("Error during login:", error);
     }

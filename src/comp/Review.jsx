@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import NavBar from "./NavBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import critique from "../data/critique";
 import { GiSandsOfTime } from "react-icons/gi";
-import { FaPlus } from "react-icons/fa6";
+import { FaLaptopCode, FaPlus } from "react-icons/fa6";
 import { IoSend } from "react-icons/io5";
 import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 import { IoIosSend } from "react-icons/io";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import axios from "axios";
 
 function Review({ textareaValue, file, setData, files }) {
   const { search } = useLocation();
@@ -223,7 +222,7 @@ function Review({ textareaValue, file, setData, files }) {
               </div>
             )}
             {type === "text" && (
-              <div className="h-80 w-80 bg-commitbg  flex flex-col   capitalize font-semibold rounded-lg">
+              <div className="h-[400px] w-[600px] bg-commitbg  flex flex-col   capitalize font-semibold rounded-lg">
                 <SyntaxHighlighter
                   wrapLines
                   language="javascript"
@@ -252,8 +251,8 @@ function Review({ textareaValue, file, setData, files }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <h1 className="text-2xl capitalize font-semibold my-5">
+        <div className="flex flex-col capitalize gap-2">
+          <h1 className="text-2xl capitalize font-semibold  my-5">
             Select the features
           </h1>
           {critique.map((crit) => {
@@ -272,16 +271,16 @@ function Review({ textareaValue, file, setData, files }) {
                   onChange={() => handleCheckboxChange(crit.title)}
                 />
                 <h1>{crit.title} </h1>
-                <GiSandsOfTime fontSize="22px" />
+                <FaLaptopCode fontSize="22px" />
               </div>
             );
           })}
           {!selectedFile && (
             <label
-              className="flex pl-5 items-center justify-between px-2 mt-2 bg-bgcririque py-2 rounded-lg cursor-pointer"
+              className="flex pl-5 items-center capitalize justify-between px-2 mt-2 bg-bgcririque py-2 rounded-lg cursor-pointer"
               htmlFor="fileInput"
             >
-              Add a file <FaPlus />
+              drop guide line <FaPlus />
               <input
                 type="file"
                 id="fileInput"
@@ -295,6 +294,7 @@ function Review({ textareaValue, file, setData, files }) {
           <div className="flex items-center justify-between px-2 mt-2 bg-bgcririque py-2 rounded-lg">
             <input
               type="text"
+              placeholder="write special criteria"
               className="text-black mr-2 p-2"
               value={inputValue}
               onChange={handleInputChange}

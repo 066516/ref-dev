@@ -27,11 +27,10 @@ function Main() {
             </p>
           </div>
           <div className="w-1/4">
-            <Link
-              to="/reviewInputs"
-              className="  bg-bgBlue py-1 px-7 mt- font-semibold text-2xl  rounded-lg"
-            >
-              Get Started
+            <Link to="/reviewInputs">
+              <div className="  bg-bgBlue py-1  text-center mt-5 font-semibold text-2xl  rounded-lg">
+                Get Started
+              </div>
             </Link>
           </div>
         </div>

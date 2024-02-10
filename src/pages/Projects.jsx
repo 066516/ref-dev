@@ -7,7 +7,31 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function Projects() {
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState([
+    {
+      name: "todo list",
+      created_at: "2022/05/13",
+    },
+    {
+      name: "store application",
+      created_at: "2022/05/13",
+    },
+    {
+      name: "task list",
+      created_at: "2022/05/13",
+    },
+    {
+      name: "todo list",
+      created_at: "2022/05/13",
+    },
+    {
+      name:"todo list",
+      created_at:"2022/05/13"
+    },{
+      name:"todo list",
+      created_at:"2022/05/13"
+    },
+  ]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -27,7 +51,7 @@ function Projects() {
     };
 
     checkAuthentication();
-  });
+  }, []);
   useEffect(() => {
     const fetchRepos = async () => {
       try {
@@ -35,7 +59,7 @@ function Projects() {
           `https://api.github.com/users/${user.login}/repos`,
           {
             headers: {
-              Authorization: `token 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`,
+              Authorization: `bearer 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`,
             },
           }
         );
@@ -46,7 +70,7 @@ function Projects() {
     };
     console.log(repos);
     if (user) fetchRepos();
-  });
+  }, []);
   return (
     <div className="w-screen h-screen  overflow-hidden ">
       <NavBar />
@@ -59,7 +83,7 @@ function Projects() {
           add project
         </div>
       </div>
-      <div className="grid grid-cols-4 items-center mx-32 bg-gray-500 text-center py-3">
+      <div className="grid grid-cols-4 items-center mx-32 bg-gradient-to-r from-gray via-transparent to-transparent pb-4 mb-4 bg-grayTrans  text-center py-3">
         <h1 className="flex justify-center items-center">project icon</h1>
         <h1>project name </h1>
         <h1>created_at</h1>

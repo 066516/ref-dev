@@ -9,12 +9,57 @@ import { darcula, dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import CodeHighlighter from "./CodeHighlighter";
 import { Link } from "react-router-dom";
 
-function ProjectCommits({files,setFiles}) {
+function ProjectCommits({ files, setFiles }) {
   const repo = new URLSearchParams(window.location.search).get("repo");
-
-  const [commits, setCommits] = useState([]);
+  files = [
+    {
+      filename: "user.json",
+      additions: 30,
+      deletions: 5,
+    },
+    {
+      filename: "user.json",
+      additions: 30,
+      deletions: 5,
+    },
+    {
+      filename: "user.json",
+      additions: 30,
+      deletions: 5,
+    },
+  ];
+  const [commits, setCommits] = useState([
+    {
+      message: "update login",
+      date: "2023/01/01",
+    },
+    {
+      message: "write readme file",
+      date: "2023/01/01",
+    },
+    {
+      message: "add author",
+      date: "2023/01/01",
+    },
+    {
+      message: " update author",
+      date: "2023/01/01",
+    },
+    {
+      message: "add user name",
+      date: "2023/01/01",
+    },
+    {
+      message: "add user name",
+      date: "2023/01/01",
+    },
+    {
+      message: "add user name",
+      date: "2023/01/01",
+    },
+  ]);
   const [selectedRepo, setSelectedRepo] = useState(null);
-  const [selectedCommit, setSelectedCommit] = useState(null);
+  const [selectedCommit, setSelectedCommit] = useState("gg");
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
   const user = Cookies.get("login");
@@ -137,8 +182,8 @@ function ProjectCommits({files,setFiles}) {
                     className="bg-commitbg w-50 text-center py-2 cursor-pointer"
                     onClick={() => handleCommitSelection(ele)}
                   >
-                    <h1>{ele.commit.message} </h1>
-                    <h1>{formatDate(ele.commit.committer.date)}</h1>
+                    <h1>{ele.message} </h1>
+                    <h1>{formatDate(ele.date)}</h1>
                   </div>
                 );
               })}
@@ -158,7 +203,7 @@ function ProjectCommits({files,setFiles}) {
               {selectedCommit == null && fileContent === "" && (
                 <h1 className="text-center">select a commit</h1>
               )}
-              {selectedCommit && fileContent === "" && (
+              {selectedCommit && (
                 <div className="flex flex-col gap-2 text-center ">
                   {files.map((file) => (
                     <div
@@ -190,7 +235,7 @@ function ProjectCommits({files,setFiles}) {
               {selectedCommit ? (
                 <Link
                   to={`/review?commit=${
-                    selectedCommit ? selectedCommit.commit.message : ""
+                    selectedCommit ? "update user" : ""
                   }`}
                   className="bg-white text-black w-fit  flex items-end py-1 px-2 rounded-lg font-medium"
                 >

@@ -13,7 +13,7 @@ export default [
   },
   {
     id: 3,
-    title: "clear code",
+    title: "clean code",
   },
   {
     id: 4,

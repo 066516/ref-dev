@@ -55,6 +55,7 @@ const App = () => {
               />
             }
           />
+          <Route element={<NotFound />} />
 
           {/* Other routes */}
         </Routes>
