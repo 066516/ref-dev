@@ -23,7 +23,7 @@ function Review({ textareaValue, file, setData, files }) {
   const [inputValue, setInputValue] = useState("");
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [filename, setFilename] = useState("");
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -43,6 +43,7 @@ function Review({ textareaValue, file, setData, files }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
+    setFilename(file ? file.name : "");
   };
 
   console.log(commit);
@@ -289,6 +290,14 @@ function Review({ textareaValue, file, setData, files }) {
                 style={{ display: "none" }}
               />
             </label>
+          )}
+          {selectedFile && (
+            <div className=" w-64 bg-commitbg text-center flex flex-col items-center  justify-center capitalize font-semibold rounded-lg">
+              <h2>review file </h2>{" "}
+              <h1 className="text-xl">
+                {selectedFile ? filename : "No file selected"}
+              </h1>
+            </div>
           )}
 
           <div className="flex items-center justify-between px-2 mt-2 bg-bgcririque py-2 rounded-lg">
